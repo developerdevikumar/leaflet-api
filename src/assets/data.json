@@ -1,0 +1,20 @@
+{
+    "venues": [
+        {
+            "description": "hi kumar ",
+            "name": "Bangalore",
+            "geometry": [
+                12.9716,
+                77.5946
+            ]
+        },
+        {
+            "description":"hi prasad",
+            "name": "Vasanth Nagar",
+            "geometry":[
+                12.9896,
+                77.5928
+            ]
+        }
+    ]
+}
