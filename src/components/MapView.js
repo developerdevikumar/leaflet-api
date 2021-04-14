@@ -1,12 +1,9 @@
-import React, { useEffect, useRef } from 'react';
-import L from 'leaflet';
-
+import React, { useEffect, useRef  } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import data from '../assets/data';
+import Markers from './VenueMarkers';
 
-
-const defaultCenter = [0, 0];
-const defaultZoom = 4;
 
 function MapView() {
   const mapRef = useRef();
@@ -14,6 +11,7 @@ function MapView() {
   useEffect(() => {
     const { current = {} } = mapRef;
     const { leafletElement: map } = current;
+    //const{ addmarkers: map}
 
     map.locate({
      setView: true,
@@ -34,32 +32,31 @@ function MapView() {
    * @param {object} event Leaflet LocationEvent object
    */
 
-  function handleOnLocationFound(event) {
-    const { current = {} } = mapRef;
-    const { leafletElement: map } = current;
+  function handleOnLocationFound() {
 
-    const latlng = event.latlng;
-    const radius = event.accuracy;
-    const circle = L.circle(latlng, radius);
-
-    circle.addTo(map);
   }
 
-  /**
-   * handleOnLocationError
+
+    /**
+     * handleOnLocationError
    * @param {object} error Leaflet ErrorEvent object
    */
 
   function handleOnLocationError(error) {
     alert(`Unable to determine location: ${error.message}`);
   }
+
     return (
-      <Map ref={mapRef} center={defaultCenter} zoom={defaultZoom}>
+      <Map ref={mapRef}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
         />
-
+ <script>
+              function myFunction() {
+                  alert("are you sure")
+              }
+              </script>
+        <Markers venues={data.venues} onclick={onclick}/>
       </Map>
     );
   }
